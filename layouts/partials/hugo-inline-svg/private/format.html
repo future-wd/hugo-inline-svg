@@ -57,8 +57,6 @@
 {{/* assemble content for inside svg tags */}}
 {{- $content := (slice $title $desc .paths) -}}
 
-
-
 {{/* put it all together and return */}}
 {{ $svgHTML := printf `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" role="img" %s>%s</svg>` (delimit $attr " ") (delimit $content " ") }}
 {{ return $svgHTML | safeHTML }}
