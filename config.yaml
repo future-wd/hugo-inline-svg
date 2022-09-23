@@ -1,4 +1,3 @@
 params:
-  inline-svg:
+  inlineSvg:
     inlineCSS: false
-    

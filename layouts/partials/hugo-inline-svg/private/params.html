@@ -19,6 +19,7 @@
 {{ $block := false }}
 {{ $title := "" }}
 {{ $desc := "" }}
+{{ $fs := "" }}
 
 {{/* if dict passed as context to partial */}}
 {{ if reflect.IsMap . }}
@@ -37,6 +38,9 @@
       {{ $block = true }}
     {{ end }}
   {{ end }}
+  {{ with .fs }}
+    {{ $fs = . }}
+  {{ end }}
 
 {{/* if called with {{ partial "svg-font" "/icons/name.svg" }}  */}}
 {{ else }}
@@ -52,7 +56,7 @@
 {{ with resources.Get $src }}
   {{ $src = . }}
 {{ else }}
-  {{ partial "hugo-inline-svg/private/input-error" (dict "ctx" . "param" "src" "value" $src "valid" "a path to a SVG file relative to the assets dir) }}
+  {{ partial "hugo-inline-svg/private/input-error" (dict "ctx" . "param" "src" "value" $src "valid" "a path to a SVG file relative to the assets dir") }}
 {{ end }}
 
 {{ $params := (dict

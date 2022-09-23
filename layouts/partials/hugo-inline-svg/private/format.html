@@ -35,24 +35,30 @@
 
 {{/* assign classes */}}
 {{ $class := (slice "svg-font" (printf "em-%v" .em)) }}
+{{ if .fs }}
+  {{ $class = $class | append (printf "fs-%v" .fs) }}
+{{ else }}
+  {{ $class = $class | append "fs-inherit" }}
+{{ end }}
 {{ if .block }}
   {{ $class = $class | append "d-block" }}
 {{ end }}
 {{ $class = printf `class="%s"` (delimit $class " ") }}
 
 {{ $styleAttr := "" }}
-{{ if eq site.Params.inline-svg.inlineCSS true }}
+{{ if eq site.Params.inlineSvg.inlineCSS true }}
   {{ $inline := (slice "font-size: inherit;" "color: inherit;" "fill: currentColor;" "vertical-align: middle;" ) }}
-  {{ $inline = $inline | append (slice (printf "height: %sem;" .em) (printf "width: %sem;" .em) }}\
+  {{ $inline = $inline | append (slice (printf "height: %sem;" .em) (printf "width: %sem;" .em)) }}
   {{ if .block }}
     {{ $inline = $inline | append (slice "display: block;") }}
   {{ end }}
-  {{/* create string /*}}
+  {{/* create string */}}
   {{ $styleAttr = printf "style=\"%s\"" (delimit $inline " ") }}
 {{ end }}
 
+
 {{/* assemble attributes for svg tag */}}
-{{- $attr := (slice .height .width .viewBox $class $ariaTitle $ariaDesc $style) -}}
+{{- $attr := (slice .height .width .viewBox $class $ariaTitle $ariaDesc $styleAttr) -}}
 
 {{/* assemble content for inside svg tags */}}
 {{- $content := (slice $title $desc .paths) -}}
@@ -60,5 +66,3 @@
 {{/* put it all together and return */}}
 {{ $svgHTML := printf `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" role="img" %s>%s</svg>` (delimit $attr " ") (delimit $content " ") }}
 {{ return $svgHTML | safeHTML }}
-
-

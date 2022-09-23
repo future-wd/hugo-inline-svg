@@ -23,7 +23,7 @@
 */}}
 
 {{ $message := "" }}
-{{ if $ctx.Page }}
+{{ if .ctx.Page }}
   {{ $message := printf "Invalid %s value of \"%v\" for svg %s on page %s. Must be %s." .param .value .ctx.src.RelPermalink .ctx.Page.RelPermalink .valid }}
 {{ else }}
   {{ $message := printf "Invalid %s value of \"%v\" for svg %s. Must be %s." .param .value .ctx.src.RelPermalink .valid }}

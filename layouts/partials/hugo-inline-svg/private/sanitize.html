@@ -20,8 +20,12 @@
     {{ partial "hugo-inline-svg/private/input-error" (dict "ctx" . "param" "src" "value" .src "valid" "a string") }}
   {{ end }}
 
-  {{ if or (ne (printf "%T" .em) "int") (or (gt .em 5) (lt .em 0)) }}
-    {{ partial "hugo-inline-svg/private/input-error" (dict "ctx" . "param" "em" "value" .em "valid" "an integer of 1-5") }}
+  {{ if or (ne (printf "%T" .em) "int") (or (gt .em 5) (lt .em 1)) }}
+    {{ partial "hugo-inline-svg/private/input-error" (dict "ctx" . "param" "scale (em)" "value" .em "valid" "an integer of 1-5") }}
+  {{ end }}
+
+  {{ if or (ne (printf "%T" .fs) "int") (or (gt .fs 7) (lt .fs 1)) }}
+    {{ partial "hugo-inline-svg/private/input-error" (dict "ctx" . "param" "font size (fs)" "value" .fs "valid" "an integer of 1-7") }}
   {{ end }}
 
   {{ if ne (printf "%T" .block) "bool" }}
