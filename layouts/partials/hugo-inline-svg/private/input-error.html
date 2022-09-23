@@ -1,0 +1,32 @@
+{{/*
+  input-error
+
+  @author @sean-au
+
+  @context (dict 
+    "valid" (string) // correct options
+    "param" (string) // variable name in error
+    "value" (string) // inputted value
+    "ctx" (string) // ctx (to extract .src)
+    )
+
+  @access private
+
+  @example - Go Template
+    {{ partial "hri/private/options-error" (dict 
+    "param" "em"
+    "value" .
+    "valid" "2x integers in an array/slice"
+    "ctx" .
+  ) }}
+
+*/}}
+
+{{ $message := "" }}
+{{ if $ctx.Page }}
+  {{ $message := printf "Invalid %s value of \"%v\" for svg %s on page %s. Must be %s." .param .value .ctx.src.RelPermalink .ctx.Page.RelPermalink .valid }}
+{{ else }}
+  {{ $message := printf "Invalid %s value of \"%v\" for svg %s. Must be %s." .param .value .ctx.src.RelPermalink .valid }}
+{{ end }}
+
+{{ partial "hugo-inline-svg/private/errorf" $message }}

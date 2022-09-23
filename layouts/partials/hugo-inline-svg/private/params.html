@@ -1,0 +1,66 @@
+{{/* 
+	hugo-inline-svg/private/params.html partial
+	
+	@author @sean-au
+	
+	@access private
+
+  @context params from partial passed in as dict
+
+  @retuns map of params
+
+	@example {{ partial "hugo-inline-svg/private/params" . }}
+
+ ****************************************************/}}
+
+{{/* init variables with defaults */}}
+{{ $src := "" }}
+{{ $em := 1 }}
+{{ $block := false }}
+{{ $title := "" }}
+{{ $desc := "" }}
+
+{{/* if dict passed as context to partial */}}
+{{ if reflect.IsMap . }}
+  {{ $src = .src }}
+  {{ with .title }}
+    {{ $title = . }}
+  {{ end }}
+  {{ with .desc }}
+    {{ $desc = . }}
+  {{ end }}
+  {{ with .em }}
+  {{ $em := . }}
+  {{ end }}
+  {{ with .block }}
+    {{ if eq . true }}
+      {{ $block = true }}
+    {{ end }}
+  {{ end }}
+
+{{/* if called with {{ partial "svg-font" "/icons/name.svg" }}  */}}
+{{ else }}
+  {{ $src = . }}
+{{ end }}
+
+{{/* add svg file suffix if not present in $src  */}}
+{{ if not (strings.HasSuffix $src ".svg") }}
+  {{ $src = printf "%s.svg" $src }}
+{{ end }}
+
+{{/* get svg resource */}}
+{{ with resources.Get $src }}
+  {{ $src = . }}
+{{ else }}
+  {{ partial "hugo-inline-svg/private/input-error" (dict "ctx" . "param" "src" "value" $src "valid" "a path to a SVG file relative to the assets dir) }}
+{{ end }}
+
+{{ $params := (dict
+  "src" $src
+  "em" $em
+  "block" $block
+  "title" $title
+  "desc" $desc
+  )}}
+
+{{ return $params }}

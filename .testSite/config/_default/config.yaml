@@ -1,0 +1,13 @@
+baseURL: https://hugo-responsive-images.netlify.app/
+languageCode: en
+title: Hugo Svg-Font Test Site
+
+# disable all extra outputs
+disableKinds:
+- sitemap
+- taxonomy
+- term
+- RSS
+
+enableInlineShortcodes: true
+

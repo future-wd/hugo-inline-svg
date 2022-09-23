@@ -1,0 +1,29 @@
+{
+  "name": "@future-wd/hugo-svg-font",
+  "version": "2.3.2",
+  "description": "Enables svgs to behave like svg fonts",
+  "main": "/layouts/partials/svg-font.html",
+  "scripts": {
+    "release": "standard-version",
+    "release:dry-run": "standard-version --dry-run",
+    "git:push": "git push --follow-tags origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/future-wd/hugo-svg-font"
+  },
+  "keywords": [
+    "Hugo",
+    "SVG",
+    "SVG",
+    "Font",
+    "Hugo",
+    "Module",
+    "Module"
+  ],
+  "author": "Sean Emerson",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "standard-version": "^9.3.1"
+  }
+}

@@ -1,0 +1,66 @@
+{{/* 
+	hugo-inline-svg/private/format.html partial
+	
+	@author @sean-au
+	
+	@access private
+
+  @context map of sanitized params
+
+  @returns svg HTML tag
+
+	@example {{ partial "hugo-inline-svg/private/format" $params }}
+
+ ****************************************************/}}
+
+{{ $random := delimit (shuffle (split (md5 "salt-ds3$#2532Ddw$36") "" )) "" }}
+
+{{/* format title */}}
+{{ $title := "" }}
+{{ $ariaTitle := "" }}
+{{ with .title }}
+  {{ $titleId := printf "%s-title" $random }}
+  {{ $title = printf `<title id="%s">%s</title>` $titleId . -}}
+  {{ $ariaTitle = printf `aria-labelledby="%s"` $titleId -}}
+{{ end -}}
+
+{{/* format desc */}}
+{{ $desc := "" }}
+{{ $ariaDesc := "" }}
+{{ with .desc }}
+  {{ $descId := printf "%s-desc" $random }}
+  {{ $desc = printf `<desc id="%s">%s</desc>` $descId . }}
+  {{ $ariaDesc = printf `aria-describedby="%s"` $descId }}
+{{ end }}
+
+{{/* assign classes */}}
+{{ $class := (slice "svg-font" (printf "em-%v" .em)) }}
+{{ if .block }}
+  {{ $class = $class | append "d-block" }}
+{{ end }}
+{{ $class = printf `class="%s"` (delimit $class " ") }}
+
+{{ $styleAttr := "" }}
+{{ if eq site.Params.inline-svg.inlineCSS true }}
+  {{ $inline := (slice "font-size: inherit;" "color: inherit;" "fill: currentColor;" "vertical-align: middle;" ) }}
+  {{ $inline = $inline | append (slice (printf "height: %sem;" .em) (printf "width: %sem;" .em) }}\
+  {{ if .block }}
+    {{ $inline = $inline | append (slice "display: block;") }}
+  {{ end }}
+  {{/* create string /*}}
+  {{ $styleAttr = printf "style=\"%s\"" (delimit $inline " ") }}
+{{ end }}
+
+{{/* assemble attributes for svg tag */}}
+{{- $attr := (slice .height .width .viewBox $class $ariaTitle $ariaDesc $style) -}}
+
+{{/* assemble content for inside svg tags */}}
+{{- $content := (slice $title $desc .paths) -}}
+
+
+
+{{/* put it all together and return */}}
+{{ $svgHTML := printf `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" role="img" %s>%s</svg>` (delimit $attr " ") (delimit $content " ") }}
+{{ return $svgHTML | safeHTML }}
+
+

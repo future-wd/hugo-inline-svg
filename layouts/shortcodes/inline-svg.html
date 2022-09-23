@@ -1,0 +1,29 @@
+{{- /* 
+	inline-svg.html shortcode
+	
+	@author @sean-au
+	
+	@access public
+
+  @prints SVG HTML tag with utility classes (CSS required)
+
+  @context 
+    positional param: svg path relative to assets dir OR
+    named params: 
+      src: svg path relative to assets dir
+      em: font size in em units (1-5) (defaults to 1)
+      block: true/false (defaults to false)
+      title: SVG title
+      desc: SVG desc
+
+	@example  {{< inline-svg "icons/icon.svg" >}}
+            {{< inline-svg src=icons/icon.svg em=2 block=true title="svg title" desc="svg desc" >}}
+            
+  ************************************************************************************************/ -}}
+{{ if .IsNamedParams }}
+  {{ partial "svg-font" .Params }}
+{{ else }}
+  {{ with (.Get 0) }}
+    {{ partial "svg-font" . }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,33 @@
+{{/* 
+	hugo-inline-svg/private/regex.html partial
+	
+	@author @sean-au
+	
+	@access private
+
+  @context map of sanitized params
+
+	@example {{ partial "hugo-inline-svg/private/regex" $params }}
+
+ ****************************************************/}}
+
+{{- /* extract text components from svg file with regex  */ -}}
+{{- /* index write the first item in array to a string as findRE creates array  */ -}}
+{{- $height := index (findRE `height=\"([0-9]*)\"` .src.Content 1) 0 -}}
+{{- $width := index (findRE `width=\"([0-9]*)\"` .src.Content 1) 0 -}}
+{{- $viewBox := index (findRE `viewBox=\"([0-9\s]*)\"` .src.Content 1) 0 -}}
+
+{{- /* delimit will create a string of all paths in svg as findRE creates array */ -}}
+{{- $paths := delimit (findRE `<path(.*)/>` .src.Content) "" -}}
+
+{{/* add everything to a map */}}
+{{ $regex := (dict 
+  "height" $height
+  "width" $width
+  "viewBox" $viewBox
+  "path" $path
+  ) }}
+
+{{/* merge with existing params and return */}}
+{{ $params := merge . $regex }}
+{{ return $params }}
