@@ -34,27 +34,32 @@
 {{ end }}
 
 {{/* assign classes */}}
-{{ $class := (slice "svg-font" (printf "em-%v" .em)) }}
-{{ if .fs }}
-  {{ $class = $class | append (printf "fs-%v" .fs) }}
-{{ else }}
-  {{ $class = $class | append "fs-inherit" }}
-{{ end }}
-{{ if .block }}
-  {{ $class = $class | append "d-block" }}
-{{ end }}
-{{ $class = printf `class="%s"` (delimit $class " ") }}
 
-{{ $styleAttr := "" }}
-{{ if eq site.Params.inlineSvg.inlineCSS true }}
-  {{ $inline := (slice "font-size: inherit;" "color: inherit;" "fill: currentColor;" "vertical-align: middle;" ) }}
-  {{ $inline = $inline | append (slice (printf "height: %sem;" .em) (printf "width: %sem;" .em)) }}
-  {{ if .block }}
-    {{ $inline = $inline | append (slice "display: block;") }}
+{{ $styleAttr := partial "hugo-inline-svg/private/inline-styles" . }}
+
+{{ $class := "" }}
+{{ if $styleAttr }}
+  {{ $class = (slice "inline-svg-inline-styled") }}
+{{ else }}
+  {{ $class = (slice "inline-svg") }}
+
+  {{ if .fs }}
+    {{ $class = $class | append (printf "fs-%v" .fs) }}
+  {{ else if .rem }}
+    {{ $class = $class | append (printf "rem-%v" .rem) }}
+  {{ else }}
+    {{ $class = $class | append "fs-inherit" }}
   {{ end }}
-  {{/* create string */}}
-  {{ $styleAttr = printf "style=\"%s\"" (delimit $inline " ") }}
+
+  {{ if eq .display "block" }}
+    {{ $class = $class | append "d-block" }}
+  {{ else if eq .display "inline" }}
+    {{ $class = $class | append "d-inline-block" }}
+  {{ end }}
+
+  {{ $class = printf `class="%s"` (delimit $class " ") }}
 {{ end }}
+
 
 
 {{/* assemble attributes for svg tag */}}
@@ -64,5 +69,5 @@
 {{- $content := (slice $title $desc .paths) -}}
 
 {{/* put it all together and return */}}
-{{ $svgHTML := printf `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" role="img" %s>%s</svg>` (delimit $attr " ") (delimit $content " ") }}
-{{ return $svgHTML | safeHTML }}
+{{ $svgHTML := printf `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" role="img" %s>%s</svg>` (delimit $attr " ") (delimit $content " ") | safeHTML }}
+{{ return $svgHTML }}

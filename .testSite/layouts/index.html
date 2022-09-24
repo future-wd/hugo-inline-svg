@@ -1,0 +1,64 @@
+{{ define "main" }}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>{{ .Title }}</h1>
+      <div>
+        {{ partial "inline-svg" (dict 
+        "src" "icons/bootstrap/clock.svg" 
+        "fs" 1
+        "display" "inline"
+        "title" "SVG Title"
+        "desc" "SVG Desc"
+        ) }} <span class="fs-1">Inline SVG, fs: 1 (2.5rem) Text fs-1</span>
+      </div>
+      <div class="fs-2">
+        {{ partial "inline-svg" (dict 
+        "src" "icons/bootstrap/clock.svg"
+        "display" "inline"
+        "title" "SVG Title"
+        "desc" "SVG Desc"
+        ) }} <span class="">Inline SVG & text inherit font size (2 - 2rem)</span>
+      </div>
+      <div class="text-primary">
+        {{ partial "inline-svg" (dict 
+        "src" "icons/bootstrap/clock.svg" 
+        "fs" 6
+        "display" "inline"
+        "title" "SVG Title"
+        "desc" "SVG Desc"
+        ) }} <span class="fs-6">Inline SVG, fs: 6 (1rem). Text fs-6</span>
+      </div>
+      <div class="d-flex flex-row align-middle pb-2">
+        <div class="d-flex align-items-center text-primary me-2 my-2">
+          {{ partial "inline-svg" (dict 
+          "src" "icons/bootstrap/clock.svg" 
+          "fs" 2
+          "display" "block"
+          "title" "SVG Title"
+          "desc" "SVG Desc"
+          ) }}
+        </div>
+        <div class="d-flex align-items-center">
+          Block SVG, font size 2 (2rem) Text 1rem,
+        </div>
+      </div>
+      <div class="d-flex flex-row align-middle pb-2">
+        <div class="d-flex align-items-center text-primary me-2 my-2">
+          {{ partial "inline-svg" (dict 
+          "src" "icons/bootstrap/clock.svg" 
+          "rem" 2
+          "display" "block"
+          "title" "SVG Title"
+          "desc" "SVG Desc"
+          ) }}
+        </div>
+        <div class="d-flex align-items-center">
+          Block SVG, rem: 2 Text 1rem,
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+ 

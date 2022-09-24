@@ -19,8 +19,9 @@
 	@example {{ partial "inline-svg" . }}
 
  ****************************************************/ -}}
-{{- partial "hugo-inline-svg/private/sanitize" . -}}
-{{- $params := partial "svg-font/private/params" . -}}
-{{- $params = partial "svg-font/private/regex" $params }}
-{{- $svgHTML = partial "svg-font/private/format" $params }}
+
+{{- $sanitize := partial "hugo-inline-svg/private/sanitize" . -}}
+{{- $params := partial "hugo-inline-svg/private/params" . -}}
+{{- $params = partial "hugo-inline-svg/private/regex" $params }}
+{{- $svgHTML := partial "hugo-inline-svg/private/format" $params }}
 {{- $svgHTML -}}

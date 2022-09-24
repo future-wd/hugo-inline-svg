@@ -15,8 +15,9 @@
 
 {{/* init variables with defaults */}}
 {{ $src := "" }}
-{{ $em := 1 }}
-{{ $block := false }}
+{{ $rem := "" }}
+{{ $block := true }}
+{{ $display := "block" }}
 {{ $title := "" }}
 {{ $desc := "" }}
 {{ $fs := "" }}
@@ -30,13 +31,11 @@
   {{ with .desc }}
     {{ $desc = . }}
   {{ end }}
-  {{ with .em }}
-  {{ $em := . }}
+  {{ with .rem }}
+    {{ $rem = . }}
   {{ end }}
-  {{ with .block }}
-    {{ if eq . true }}
-      {{ $block = true }}
-    {{ end }}
+  {{ with .display }}
+    {{ $display = . }}
   {{ end }}
   {{ with .fs }}
     {{ $fs = . }}
@@ -61,10 +60,11 @@
 
 {{ $params := (dict
   "src" $src
-  "em" $em
-  "block" $block
+  "rem" $rem
+  "display" $display
   "title" $title
   "desc" $desc
-  )}}
+  "fs" $fs
+  ) }}
 
 {{ return $params }}

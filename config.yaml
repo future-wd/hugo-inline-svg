@@ -1,3 +1,12 @@
 params:
   inlineSvg:
     inlineCSS: false
+    inlineStyles:
+      fs:
+        1: 2.5
+        2: 2
+        3: 1.75
+        4: 1.5
+        5: 1.25
+        6: 1
+        7: 0.875

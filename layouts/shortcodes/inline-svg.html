@@ -21,6 +21,7 @@
             
   ************************************************************************************************/ -}}
 {{ if .IsNamedParams }}
+  {{ $params := merge .Params (dict "page" .Page) }}
   {{ partial "svg-font" .Params }}
 {{ else }}
   {{ with (.Get 0) }}

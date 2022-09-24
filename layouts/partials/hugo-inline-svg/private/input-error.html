@@ -24,9 +24,13 @@
 
 {{ $message := "" }}
 {{ if .ctx.Page }}
-  {{ $message := printf "Invalid %s value of \"%v\" for svg %s on page %s. Must be %s." .param .value .ctx.src.RelPermalink .ctx.Page.RelPermalink .valid }}
+  {{ $message = printf "Invalid %s value of \"%v\" for svg %s on page %s. Must be %s." .param .value .ctx.src .ctx.page.RelPermalink .valid }}
 {{ else }}
-  {{ $message := printf "Invalid %s value of \"%v\" for svg %s. Must be %s." .param .value .ctx.src.RelPermalink .valid }}
+  {{ $message = printf "Invalid %s value of \"%v\" for svg %s. Must be %s." .param .value .ctx.src .valid }}
 {{ end }}
 
+{{/* log custom error message */}}
 {{ partial "hugo-inline-svg/private/errorf" $message }}
+
+{{/* return to avoid printing */}}
+{{ return true }}

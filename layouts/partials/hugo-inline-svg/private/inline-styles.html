@@ -1,0 +1,44 @@
+{{ $styleAttr := "" }}
+{{ if eq site.Params.inlineSvg.inlineCSS true }}
+  {{ $inline := (slice  "color: inherit;" "fill: currentColor;"  ) }}
+
+  {{ if eq .display "block" }}
+    {{ $inline = $inline | append (slice 
+      "display: block;" 
+      "height: 1em;" 
+      "width: 1em;"
+      "vertical-align: middle;"
+      ) }}
+  {{ else if eq .display "inline" }}
+    {{ $inline = $inline | append (slice 
+      "display: inline-block;" 
+      "height: 0.7em;" 
+      "width: 0.7em;"
+      "vertical-align: baseline;"
+  
+      ) }}
+  {{ end }}
+
+  {{ if .fs }}
+    {{ $fsMap := (dict 
+      "1" "2.5"
+      "2" "2"
+      "3" "1.75"
+      "4" "1.5"
+      "5" "1.25"
+      "6" "1"
+      "7" "0.875"
+      )}}
+    {{ $inline = $inline | append (slice (printf "font-size: %vrem;" (index $fsMap (.fs | string)))) }}
+  {{ else if .rem }}
+    {{ $inline = $inline | append (slice (printf "font-size: %vrem;" .rem)) }}
+  {{ else }}
+    {{ $inline = $inline | append (slice "font-size: inherit;") }}
+  {{ end }}
+
+
+  {{/* create string */}}
+  {{ $styleAttr = printf `style="%s"` (delimit $inline " ") }}
+{{ end }}
+
+{{ return $styleAttr }}

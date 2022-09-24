@@ -16,13 +16,34 @@ To use the optional argument you must pass a dict as the partials context.
 {{ partial "svg-font" (dict "src" "icons/bootstrap/envelope" "em" 2 "block" true "title" "Icon Title" "desc" "Icon Desc")}}
 ```
 
+### Source 
+
 `src` points to the SVG file relative to the assets folder. The .svg suffix is optional.
 
-`em` is for setting the width that the icon will be displayed at. The default is 1em which will display an svg at its native size.
+<!-- `em` is for setting the width that the icon will be displayed at. The default is 1em which will display an svg at its native size. -->
 
-`block` is set to true if you are not using svg inline with text. This enables `display:block`.
+<!-- `block` is set to true if you are not using svg inline with text. This enables `display:block`. -->
+
+### Display style
+
+`display` can be set to  the following:
+
+- `inline` to `display:inline-block` and match the height of text (scale of 0.7em).
+- `block` to `display:block` and have a scale of 1em.
+
+### Size
+
+By default the SVG's are set to `font-size: inherit;` which allows the svg to take on the `font-size` of its parent. Aternatively you can override this behaviour with **EITHER** following options:
+
+- `fs` can be set to 1-7. These sizes mirror bootstrap's font sizes with the addition of 7 which is 0.875 (.small or \<small>)
+
+- `rem` can be set to 1-5 which will set the `font-size` to 1-5rem. More granular control is available with `fs`.
+
+### SVG Title
 
 `title` adds a title tag which browsers pick up and display on hover. It also adds `aria-labelledby` to the SVG. (for assistive technology). The title is useful for desktop users, but does not add functionality for mobile users. (who aren't using assistive technology/screen readers)
+
+### SVG Description
 
 `description` adds a description tag and adds `aria-describedby` to the SVG. (for assistive technology)
 

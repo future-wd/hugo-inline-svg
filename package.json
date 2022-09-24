@@ -1,8 +1,8 @@
 {
-  "name": "@future-wd/hugo-svg-font",
+  "name": "@future-wd/hugo-inline-svg",
   "version": "2.3.2",
   "description": "Enables svgs to behave like svg fonts",
-  "main": "/layouts/partials/svg-font.html",
+  "main": "/layouts/partials/inline-svg.html",
   "scripts": {
     "release": "standard-version",
     "release:dry-run": "standard-version --dry-run",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/future-wd/hugo-svg-font"
+    "url": "github.com/future-wd/hugo-inline-svg"
   },
   "keywords": [
     "Hugo",
@@ -19,7 +19,7 @@
     "Font",
     "Hugo",
     "Module",
-    "Module"
+    "inline"
   ],
   "author": "Sean Emerson",
   "license": "CC0-1.0",

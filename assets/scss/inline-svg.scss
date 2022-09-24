@@ -15,28 +15,44 @@
 
  ****************************************************/
 
-.svg-font {
+.inline-svg {
   color: inherit;
   fill: currentColor;
-  vertical-align: middle;
+  vertical-align: baseline;
+
+  &.d-inline-block {
+    display: inline-block;
+    height: 0.7em;
+    width: 0.7em;
+  }
 
   &.fs-inherit {
     font-size: inherit;
   }
   &.d-block {
     display: block;
+    height: 1em;
+    width: 1em;
+
+    // @for $i from 1 to 5 {
+    //   &.em {
+    //     &-#{$i} {
+    //       height: ($i) + em;
+    //       width: ($i) + em;
+    //     }
+    //   }
+    // }
   }
 
   @for $i from 1 to 5 {
-    &.em {
+    &.rem {
       &-#{$i} {
-        height: ($i) + em;
-        width: ($i) + em;
+        font-size: ($i) + rem;
       }
     }
   }
 
-  $font-sizes: (
+  $bs-font-sizes: (
     1: 2.5,
     2: 2,
     3: 1.75,
@@ -46,7 +62,7 @@
     7: 0.875,
   );
 
-  @each $key, $size in $font-sizes {
+  @each $key, $size in $bs-font-sizes {
     &.fs {
       &-#{$key} {
         font-size: ($size) + rem;

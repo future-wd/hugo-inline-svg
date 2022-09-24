@@ -11,9 +11,8 @@
   },
   "author": "Sean Emerson",
   "license": "ISC",
-  "homepage": "https://hugo-responsive-images.netlify.app/",
+  "homepage": "https://hugo-inline-svg.netlify.app/",
   "dependencies": {
-    "bootstrap": "^5.2.0",
-    "lazysizes": "^5.3.2"
+    "bootstrap": "^5.2.0"
   }
 }
