@@ -1,3 +1,3 @@
-module github.com/future-wd/hugo-svg-font-test-site
+module github.com/future-wd/hugo-inline-svg-test-site
 
 go 1.18

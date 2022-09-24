@@ -1,7 +1,6 @@
 {
-  "name": "basic-bootstrap-template",
-  "version": "1.0.0",
-  "description": "Basic Bootstrap Template - No Bloat!",
+  "name": "hugo-inline-svg-test-site",
+  "description": "Test site for Hugo Inline SVG Module",
   "scripts": {
     "dev": "hugo server --gc --disableFastRender ",
     "build": "hugo -v --gc --minify --cleanDestinationDir",
@@ -10,7 +9,7 @@
     "npm-check": "npx npm-check -u"
   },
   "author": "Sean Emerson",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://hugo-inline-svg.netlify.app/",
   "dependencies": {
     "bootstrap": "^5.2.0"

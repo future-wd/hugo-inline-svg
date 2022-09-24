@@ -1,3 +1,3 @@
-module github.com/future-wd/hugo-svg-font/v2
+module github.com/future-wd/hugo-inline-svg
 
 go 1.17

@@ -33,15 +33,6 @@
     display: block;
     height: 1em;
     width: 1em;
-
-    // @for $i from 1 to 5 {
-    //   &.em {
-    //     &-#{$i} {
-    //       height: ($i) + em;
-    //       width: ($i) + em;
-    //     }
-    //   }
-    // }
   }
 
   @for $i from 1 to 5 {
