@@ -1,6 +1,6 @@
 {
   "name": "hugo-inline-svg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Enables svgs to behave like svg fonts",
   "main": "/layouts/partials/inline-svg.html",
   "scripts": {
@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/future-wd/hugo-inline-svg/issues"
   },
-  "homepage": "https://github.com/future-wd/hugo-inline-svg#readme"
+  "homepage": "https://github.com/future-wd/hugo-inline-svg#readme",
+  "dependencies": {
+    "standard-version": "^9.5.0"
+  }
 }
