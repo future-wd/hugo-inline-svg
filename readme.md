@@ -1,11 +1,11 @@
-# Hugo SVG Font (v2)
+# Hugo Inline SVG
 
 ## Simple Partial Usage
 
 The "source" path is relative to the resources folder.
 
 ```HTML
-{{ partial "svg-font" "icons/bootstrap/envelope" }}
+{{ partial "inline-svg" "icons/bootstrap/envelope" }}
 ```
 
 ## Optional Arguments for Partial
@@ -13,7 +13,7 @@ The "source" path is relative to the resources folder.
 To use the optional argument you must pass a dict as the partials context.
 
 ``` HTML
-{{ partial "svg-font" (dict "src" "icons/bootstrap/envelope" "em" 2 "block" true "title" "Icon Title" "desc" "Icon Desc")}}
+{{ partial "inline-svg" (dict "src" "icons/bootstrap/envelope" "fs" 2 "block" true "title" "Icon Title" "desc" "Icon Desc")}}
 ```
 
 ### Source 
@@ -49,7 +49,7 @@ By default the SVG's are set to `font-size: inherit;` which allows the svg to ta
 
 ## Shortcode usage
 
-{{< svg-font src="icons/bootstrap/envelope" em=2 block=true title="Icon Title" desc="Icon Desc" >}}
+{{< svg-font src="icons/bootstrap/envelope" block=true title="Icon Title" desc="Icon Desc" >}}
 
 ## Styling your icons
 
@@ -58,7 +58,7 @@ You need to wrap your partial or shortcode in a div or span and add CSS classes 
 An example utilizing bootstrap 5's utility classes is as follows:
 
 ```HTML
-<span class="fs-2 text-primary">{{ partial "svg-font" "icons/bootstrap/envelope" }}</span>
+<span class="fs-2 text-primary">{{ partial "inline-svg" "icons/bootstrap/envelope" }}</span>
 ```
 
 *fs-2 changes the font size for the svg and text-primary changes the line color to primary (blue by default).*
@@ -96,7 +96,7 @@ Or instead run the following partial in the projects head to compile the scss (s
 ### Input
 
 ``` HTML
-{{ partial "svg-font" (dict "src" "icons/bootstrap/envelope" "em" 2 "block" true "title" "Email Address" "desc" "Email address of business")}}
+{{ partial "inline-svg" (dict "src" "icons/bootstrap/envelope" "em" 2 "block" true "title" "Email Address" "desc" "Email address of business")}}
 ```
 
 ```HTML
