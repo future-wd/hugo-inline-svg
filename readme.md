@@ -3,7 +3,7 @@
 [![GitHub License](https://img.shields.io/github/license/future-wd/hugo-responsive-images?style=flat-square)](https://github.com/future-wd/hugo-inline-svg/blob/master/LICENSE)
 [![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/future-wd/hugo-inline-svg?include_prereleases&style=flat-square)](https://github.com/future-wd/hugo-inline-svg/releases)
 [![GoLang version"](https://img.shields.io/github/go-mod/go-version/future-wd/hugo-inline-svg?style=flat-square)](https://go.dev/)
-<!-- [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re) -->
+<!-- [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/budparr/awesome-hugo) -->
 
 ## Simple Partial Usage
 
