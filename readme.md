@@ -1,7 +1,7 @@
 # Hugo Inline SVG [<img src="https://d33wubrfki0l68.cloudfront.net/c38c7334cc3f23585738e40334284fddcaf03d5e/2e17c/images/hugo-logo-wide.svg" align="right" width="250">](https://gohugo.io/)
 
 [![GitHub License](https://img.shields.io/github/license/future-wd/hugo-inline-svg?style=flat-square)](https://github.com/future-wd/hugo-inline-svg/blob/master/LICENSE)
-[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/future-wd/hugo-inine-svg?style=flat-square)](https://github.com/future-wd/hugo-inine-svg/)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/future-wd/hugo-inline-svg?style=flat-square)](https://github.com/future-wd/hugo-inline-svg/tags)
 [![GoLang version"](https://img.shields.io/github/go-mod/go-version/future-wd/hugo-inline-svg?style=flat-square)](https://go.dev/)
 [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/budparr/awesome-hugo)
 
