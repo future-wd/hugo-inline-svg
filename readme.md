@@ -72,22 +72,21 @@ An example utilizing bootstrap 5's utility classes is as follows:
 
 ### Import module
 
-Ensure that you are importing v2 as v1 is depreciated and not maintained.
 
 ```YAML
 # config.yaml
 module:
   imports:
-  - path: github.com/future-wd/hugo-svg-font/v2
+  - path: github.com/future-wd/hugo-inline-svg
 ```
 
 ### Import CSS
 
-You need to import required css from `/assets/scss/svg-font.scss'
+You need to import required css from `/assets/scss/inline-svg.scss'
 
 ```SCSS
-// /assets/scss/index.scss
-@import "svg-font.scss";
+// /assets/scss/index.scss  ! if your file is not located here, you must adjust your import path !
+@import "inline-svg.scss";
 ```
 
 Or instead run the following partial in the projects head to compile the scss (source map and non-compressed CSS provided for development use)
