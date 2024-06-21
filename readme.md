@@ -54,7 +54,7 @@ By default the SVG's are set to `font-size: inherit;` which allows the svg to ta
 
 ## Shortcode usage
 
-{{< svg-font src="icons/bootstrap/envelope" block=true title="Icon Title" desc="Icon Desc" >}}
+{{< inline-svg src="icons/bootstrap/envelope" block=true title="Icon Title" desc="Icon Desc" >}}
 
 ## Styling your icons
 
@@ -89,8 +89,3 @@ You need to import required css from `/assets/scss/inline-svg.scss'
 @import "inline-svg.scss";
 ```
 
-Or instead run the following partial in the projects head to compile the scss (source map and non-compressed CSS provided for development use)
-
-```HTML
-{{- partial "svg-font/css" . }}
-```
