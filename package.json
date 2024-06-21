@@ -1,6 +1,6 @@
 {
   "name": "hugo-inline-svg",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Enables svgs to behave like svg fonts",
   "main": "/layouts/partials/inline-svg.html",
   "scripts": {
